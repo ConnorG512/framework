@@ -20,4 +20,5 @@ enum class DataPathError {
   NULL_ENV_VAR,
 };
 [[nodiscard]] std::expected<std::filesystem::path, DataPathError> get_system_path(const std::string &app_path_name = "fw") noexcept;
+[[nodiscard]] std::expected<std::filesystem::path, DataPathError> get_custom_path(const std::string &app_path_name = "fw") noexcept;
 } // namespace FW::FS
