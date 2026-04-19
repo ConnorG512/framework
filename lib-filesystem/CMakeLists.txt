@@ -8,6 +8,12 @@ set(SOURCE_FILES
   src/filesystem.cpp
 )
 
+if(WIN32)
+  list(APPEND SOURCE_FILES src/system-path-windows.cpp)
+elseif(LINUX)
+  list(APPEND SOURCE_FILES src/system-path-linux.cpp)
+endif()
+
 add_library(filesystem-lib STATIC
   ${SOURCE_FILES}
 )
