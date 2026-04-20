@@ -39,6 +39,7 @@ auto has_hit_max_writes = [](const std::uint32_t max, const std::uint32_t curren
 FW::Log::Instance::Instance(const std::filesystem::path &path, const std::uint32_t max_writes)
     : file_{path, std::ios::trunc}, max_writes_{max_writes}
 {
+  assert(file_.is_open() && "File should be open in the constructor!");
 }
 
 void FW::Log::Instance::write(const Type type, const std::string &message)
