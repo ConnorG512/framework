@@ -42,9 +42,11 @@ set(LUA_SOURCE_FILES
 
 if(LUASCRIPT_IO)
   list(APPEND LUA_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/external/lua/liolib.c") 
+  message(STATUS "LUASCRIPT_IO is enabled")
 endif()
 if(LUASCRIPT_OS)
   list(APPEND LUA_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/external/lua/loslib.c") 
+  message(STATUS "LUASCRIPT_OS is enabled")
 endif()
 
 add_library(luascript-lib STATIC
