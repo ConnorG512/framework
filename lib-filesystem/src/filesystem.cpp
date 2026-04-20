@@ -1,5 +1,6 @@
 #include "filesystem.hpp"
 
+#include <cassert>
 #include <cstdlib>
 #include <filesystem>
 #include <print>
@@ -30,12 +31,21 @@ validate_paths(const std::span<const std::filesystem::path> item_collection) noe
   return {};
 }
 
-[[nodiscard]] std::expected<std::filesystem::path, FW::FS::DataPathError> get_custom_path(const std::string &app_path_name) noexcept
+[[nodiscard]] std::expected<std::filesystem::path, FW::FS::DataPathError>
+get_custom_path(const std::string &app_path_name) noexcept
 {
-  const auto path {std::getenv("FW_CUSTOM_DATA_PATH")};
-  if(path == nullptr)
+  const auto path{std::getenv("FW_CUSTOM_DATA_PATH")};
+  if (path == nullptr)
     return std::unexpected(FW::FS::DataPathError::NULL_ENV_VAR);
-  
-  const std::filesystem::path complete_path {std::filesystem::path(path) / app_path_name};
+
+  const std::filesystem::path complete_path{std::filesystem::path(path) / app_path_name};
   return complete_path;
+}
+
+void create_directories(const std::filesystem::path &path, const std::span<std::string_view> dir_list)
+{
+  assert(!dir_list.empty() && "Directory list cannot be empty!");
+
+  for (const auto &directory : dir_list)
+    std::filesystem::create_directory(path / directory);
 }

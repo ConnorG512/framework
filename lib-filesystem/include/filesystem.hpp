@@ -1,9 +1,10 @@
 #pragma once
 
 #include <expected>
-
 #include <filesystem>
 #include <span>
+#include <string_view>
+
 namespace FW::FS
 {
 enum class ExistsErrors
@@ -16,9 +17,14 @@ enum class ExistsErrors
 [[nodiscard]] std::expected<void, ExistsErrors>
 validate_paths(const std::span<const std::filesystem::path> item_collection) noexcept;
 
-enum class DataPathError {
+enum class DataPathError
+{
   NULL_ENV_VAR,
 };
-[[nodiscard]] std::expected<std::filesystem::path, DataPathError> get_system_path(const std::string &app_path_name = "fw") noexcept;
-[[nodiscard]] std::expected<std::filesystem::path, DataPathError> get_custom_path(const std::string &app_path_name = "fw") noexcept;
+[[nodiscard]] std::expected<std::filesystem::path, DataPathError>
+get_system_path(const std::string &app_path_name = "fw") noexcept;
+[[nodiscard]] std::expected<std::filesystem::path, DataPathError>
+get_custom_path(const std::string &app_path_name = "fw") noexcept;
+
+void create_directories(const std::filesystem::path &path, const std::span<std::string_view> dir_list);
 } // namespace FW::FS
