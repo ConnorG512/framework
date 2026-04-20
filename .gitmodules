@@ -1,0 +1,3 @@
+[submodule "lib-luascript/external/lua"]
+	path = lib-luascript/external/lua
+	url = https://github.com/lua/lua.git
