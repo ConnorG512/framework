@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Toggle libraries: 
 option(USE_FILESYSTEM_LIB "Include filesystem library" ON)
 option(USE_LOGGER_LIB "Include logger library" ON)
+option(USE_LUASCRIPT_LIB "Include logger library" ON)
 
 add_compile_options(
   -Wall
@@ -20,4 +21,7 @@ if(USE_FILESYSTEM_LIB)
 endif()
 if(USE_LOGGER_LIB)
   add_subdirectory(lib-logger)
+endif()
+if(USE_LUASCRIPT_LIB)
+  add_subdirectory(lib-luascript)
 endif()
