@@ -2,3 +2,4 @@
 /.cache
 result
 /compile_commands.json
+/lib-luascript/build
