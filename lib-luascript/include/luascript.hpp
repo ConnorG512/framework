@@ -2,13 +2,14 @@
 
 #include <expected>
 #include <span>
+#include <memory>
+
 extern "C"
 {
 #include "lauxlib.h"
 #include "lua.h"
 }
 
-#include <memory>
 
 // Forward
 namespace FW
