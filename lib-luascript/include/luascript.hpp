@@ -1,15 +1,14 @@
 #pragma once
 
 #include <expected>
-#include <span>
 #include <memory>
+#include <span>
 
 extern "C"
 {
 #include "lauxlib.h"
 #include "lua.h"
 }
-
 
 // Forward
 namespace FW
@@ -31,7 +30,6 @@ enum class LuaCPushErr
 
 [[nodiscard]] std::expected<void, LuaCPushErr> register_function_list(Inst &lua_instance,
                                                                       const std::span<const lua_CFunction> func_list);
-
 class Inst
 {
 public:
