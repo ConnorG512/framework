@@ -36,3 +36,15 @@ FW::LScript::register_function_list(Inst &lua_instance, const std::span<const lu
   else 
     return true;
 }
+
+[[nodiscard]] bool FW::LScript::execute_file_list(Inst &instance, const std::span<const std::filesystem::path> file_list) noexcept
+{
+  assert(!file_list.empty());
+
+  for (const auto& file : file_list)
+  {
+    if(!instance.execute_file(file))
+      return false;
+  }
+  return true;
+}

@@ -138,3 +138,7 @@ FW::LScript::Inst::get_value_from_script(const std::string &table_path)
 
   return return_val(get_value());
 }
+
+namespace FW::LScript {
+  [[nodiscard]] bool execute_file_list(Inst &instance, const std::span<const std::filesystem::path> file_list) noexcept;
+}
