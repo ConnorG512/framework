@@ -22,7 +22,7 @@
         shellHook = "";
       };
 
-      gcc =
+      packages.x86_64-linux =
         let
           pname = "luascript-lib";
 
