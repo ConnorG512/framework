@@ -6,6 +6,7 @@
 #include <cassert>
 #include <concepts>
 #include <expected>
+#include <filesystem>
 #include <memory>
 #include <ranges>
 #include <span>
@@ -56,7 +57,7 @@ public:
 
   template <LuaType LuaValue>
   [[nodiscard]] std::expected<LuaValue, LuaPullValErr> get_value_from_script(const std::string &table_path);
-
+  [[nodiscard]] bool execute_file(const std::filesystem::path &path_to_file) noexcept;
 private:
   std::unique_ptr<lua_State, decltype(&lua_close)> lua_{luaL_newstate(), &lua_close};
 };

@@ -1,3 +1,4 @@
+#include "lauxlib.h"
 #include "lua.h"
 #include "luascript.hpp"
 #include <cassert>
@@ -31,4 +32,12 @@ FW::LScript::register_function_list(Inst &lua_instance, const std::span<const lu
 
     return {};
   }
+}
+
+[[nodiscard]] bool FW::LScript::Inst::execute_file(const std::filesystem::path &path_to_file) noexcept 
+{
+  if(luaL_dofile(lua_.get(), path_to_file.c_str()) != LUA_OK)
+    return false;
+  else 
+    return true;
 }
