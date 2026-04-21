@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     libFilesystem.url = "path:./lib-filesystem";
     libLogger.url = "path:./lib-logger";
-    libLuascript.url = "path:./lib-luascript?submodules=1";
+    libLuascript.url = "path:./lib-luascript";
   };
 
   outputs = { self, nixpkgs, libFilesystem, libLogger, libLuascript }: 
@@ -29,7 +29,7 @@
       paths = [
         libFilesystem.packages.x86_64-linux.gcc-debug
         libLogger.packages.x86_64-linux.gcc-debug
-        libLuascript.packages.x86_64-linux.gcc-debug
+        #libLuascript.packages.x86_64-linux.gcc-debug
       ];
     };
   };
