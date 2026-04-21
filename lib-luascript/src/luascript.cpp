@@ -3,11 +3,6 @@
 #include "luascript.hpp"
 #include <cassert>
 
-namespace
-{
-
-}
-
 std::expected<void, FW::LScript::LuaCPushErr> FW::LScript::Inst::register_function(const lua_CFunction func) noexcept
 {
   assert(func != nullptr && "lua function passed cannot be nullptr!");
