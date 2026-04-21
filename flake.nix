@@ -5,9 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     libFilesystem.url = "path:./lib-filesystem";
     libLogger.url = "path:./lib-logger";
+    libLuascript.url = "path:./lib-luascript";
   };
 
-  outputs = { self, nixpkgs, libFilesystem, libLogger }: 
+  outputs = { self, nixpkgs, libFilesystem, libLogger, libLuascript }: 
   let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in 
@@ -21,6 +22,13 @@
       shellHook = ''
         echo "Entering top level shell!"
       '';
+    };
+
+    packages.x86_64-linux.bundle = pkgs.symLinkJoin {
+      name = "libraries-debug";
+      paths = [
+        libLuascript.packages.x86_64-linux.gcc-debug
+      ];
     };
   };
 }
