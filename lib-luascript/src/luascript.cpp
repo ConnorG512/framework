@@ -1,11 +1,7 @@
+#include "lauxlib.h"
 #include "lua.h"
 #include "luascript.hpp"
 #include <cassert>
-
-namespace
-{
-
-}
 
 std::expected<void, FW::LScript::LuaCPushErr> FW::LScript::Inst::register_function(const lua_CFunction func) noexcept
 {
@@ -31,4 +27,24 @@ FW::LScript::register_function_list(Inst &lua_instance, const std::span<const lu
 
     return {};
   }
+}
+
+[[nodiscard]] bool FW::LScript::Inst::execute_file(const std::filesystem::path &path_to_file) noexcept 
+{
+  if(luaL_dofile(lua_.get(), path_to_file.c_str()) != LUA_OK)
+    return false;
+  else 
+    return true;
+}
+
+[[nodiscard]] bool FW::LScript::execute_file_list(Inst &instance, const std::span<const std::filesystem::path> file_list) noexcept
+{
+  assert(!file_list.empty());
+
+  for (const auto& file : file_list)
+  {
+    if(!instance.execute_file(file))
+      return false;
+  }
+  return true;
 }
