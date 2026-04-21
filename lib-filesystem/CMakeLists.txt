@@ -21,3 +21,6 @@ add_library(filesystem-lib STATIC
 target_include_directories(filesystem-lib PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
+
+install(TARGETS filesystem-lib DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include)
