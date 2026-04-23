@@ -29,7 +29,7 @@
       paths = [
         libFilesystem.packages.x86_64-linux.gcc-debug
         libLogger.packages.x86_64-linux.gcc-debug
-        #libLuascript.packages.x86_64-linux.gcc-debug
+        libLuascript.packages.x86_64-linux.gcc-debug
       ];
     };
   };
