@@ -32,7 +32,11 @@
 
         dontStrip = true;
 
-        nativeBuildInputs = [ ];
+        nativeBuildInputs = with pkgs; [ 
+          pkg-config
+          cmake 
+          ninja
+        ];
         buildInputs = [ ];
         cmakeFlags = [
           "-DCMAKE_BUILD_TYPE=Debug"
