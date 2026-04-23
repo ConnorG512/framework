@@ -64,3 +64,6 @@ target_include_directories(luascript-lib PRIVATE
   "${LUA_SRC_DIR}"
   "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
+
+install(TARGETS luascript-lib DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include)
