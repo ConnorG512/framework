@@ -22,5 +22,23 @@
         echo "Entering shell!"
       '';
     };
+
+    packages.x86_64-linux = 
+    {
+      gcc-debug = pkgs.stdenv.mkDerivation (finalAttrs: {
+        pname = "filesystem-lib";
+        version = "git";
+        src = ./.;
+
+        dontStrip = true;
+
+        nativeBuildInputs = [ ];
+        buildInputs = [ ];
+        cmakeFlags = [
+          "-DCMAKE_BUILD_TYPE=Debug"
+          
+        ];
+      });
+    };
   };
 }

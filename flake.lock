@@ -28,6 +28,20 @@
       },
       "parent": []
     },
+    "libLuascript": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "path": "./lib-luascript",
+        "type": "path"
+      },
+      "original": {
+        "path": "./lib-luascript",
+        "type": "path"
+      },
+      "parent": []
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1776169885,
@@ -62,6 +76,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1776548001,
+        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1776169885,
         "narHash": "sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM=",
         "owner": "nixos",
@@ -80,7 +110,8 @@
       "inputs": {
         "libFilesystem": "libFilesystem",
         "libLogger": "libLogger",
-        "nixpkgs": "nixpkgs_3"
+        "libLuascript": "libLuascript",
+        "nixpkgs": "nixpkgs_4"
       }
     }
   },

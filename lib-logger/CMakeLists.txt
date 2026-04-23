@@ -11,3 +11,6 @@ add_library(logger-lib STATIC
 target_include_directories(logger-lib PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
+
+install(TARGETS logger-lib DESTINATION lib)
+install(DIRECTORY include/ DESTINATION include)
