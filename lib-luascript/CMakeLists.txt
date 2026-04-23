@@ -60,10 +60,14 @@ add_library(luascript-lib STATIC
   ${LUA_SOURCE_FILES}
 )
 
-target_include_directories(luascript-lib PRIVATE
-  "${LUA_SRC_DIR}"
-  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+target_include_directories(luascript-lib 
+  PRIVATE
+  ${LUA_SOURCE_FILES}
+
+  PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
 )
 
-install(TARGETS luascript-lib DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include/luascript)
+install(TARGETS luascript-lib DESTINATION lib)
