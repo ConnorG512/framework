@@ -60,7 +60,6 @@ private:
 // Implementation files:
 #include "luascript.ipp"
 
-
 namespace FW::LScript {
   [[nodiscard]] bool execute_file_list(Inst &instance, const std::span<const std::filesystem::path> file_list) noexcept;
 }

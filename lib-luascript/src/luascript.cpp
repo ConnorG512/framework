@@ -1,6 +1,7 @@
 #include "lauxlib.h"
 #include "lua.h"
 #include "luascript.hpp"
+
 #include <cassert>
 
 std::expected<void, FW::LScript::LuaCPushErr> FW::LScript::Inst::register_function(const lua_CFunction func) noexcept
