@@ -62,7 +62,7 @@ add_library(luascript-lib STATIC
 
 target_include_directories(luascript-lib 
   PRIVATE
-  ${LUA_SOURCE_FILES}
+  ${LUA_SRC_DIR}
 
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
