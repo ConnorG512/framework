@@ -8,7 +8,7 @@ add_library(logger-lib STATIC
   src/logger.cpp
 )
 
-target_include_directories(logger-lib PRIVATE
+target_include_directories(logger-lib PUBLIC
   "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
