@@ -2,6 +2,9 @@
 
 #include "luascript.hpp"
 
+#include <vector>
+#include <ranges>
+
 template <FW::LScript::LuaType LuaValue>
 [[nodiscard]] std::expected<LuaValue, FW::LScript::LuaPullValErr>
 FW::LScript::Inst::get_value_from_script(const std::string &table_path)
