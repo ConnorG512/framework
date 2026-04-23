@@ -3,15 +3,11 @@
 #include "types.hpp"
 
 #include <cassert>
-#include <concepts>
 #include <expected>
 #include <filesystem>
 #include <memory>
-#include <ranges>
 #include <span>
 #include <string>
-#include <type_traits>
-#include <vector>
 
 extern "C"
 {
