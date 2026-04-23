@@ -13,4 +13,4 @@ target_include_directories(logger-lib PRIVATE
 )
 
 install(TARGETS logger-lib DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY include/ DESTINATION include/logger)

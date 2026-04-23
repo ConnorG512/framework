@@ -23,4 +23,4 @@ target_include_directories(filesystem-lib PRIVATE
 )
 
 install(TARGETS filesystem-lib DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY include/ DESTINATION include/filesystem)

@@ -66,4 +66,4 @@ target_include_directories(luascript-lib PRIVATE
 )
 
 install(TARGETS luascript-lib DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY include/ DESTINATION include/luascript)
