@@ -47,5 +47,8 @@ void create_directories(const std::filesystem::path &path, const std::span<std::
   assert(!dir_list.empty() && "Directory list cannot be empty!");
 
   for (const auto &directory : dir_list)
+  {
+    assert(!directory.empty() && "Directory name cannot be an empty string!");
     std::filesystem::create_directory(path / directory);
+  }
 }
