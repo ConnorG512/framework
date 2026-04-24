@@ -56,7 +56,9 @@ if(LUASCRIPT_OS)
 endif()
 
 add_library(luascript-lib STATIC
-  src/luascript.cpp
+  src/files.cpp
+  src/function.cpp
+  src/instance.cpp
   ${LUA_SOURCE_FILES}
 )
 
