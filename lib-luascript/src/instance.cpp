@@ -1,8 +1,11 @@
 #include "errors.hpp"
 #include "instance.hpp"
+#include "types.hpp"
+
+extern "C" {
 #include "lauxlib.h"
 #include "lua.h"
-#include "types.hpp"
+}
 
 #include <algorithm>
 #include <cassert>
