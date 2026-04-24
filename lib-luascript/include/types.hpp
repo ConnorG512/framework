@@ -1,10 +1,17 @@
 #pragma once 
 
-#include <concepts>
-#include <string>
-#include <type_traits>
+struct lua_State; // Forward
 
-namespace FW::LScript {
-  template <typename T>
-    concept LuaType = std::is_arithmetic_v<T> || std::same_as<T, std::string>;
-};
+namespace FW::LS {
+  struct FuncRegData
+  {
+    int (*lua_func)(lua_State *){nullptr};
+    const char *signature{nullptr};
+  };
+
+  enum class PulledTypes {
+    BOOLEAN,
+    NUMBER,
+    STRING,
+  };
+}
