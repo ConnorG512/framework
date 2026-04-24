@@ -1,35 +1,30 @@
 #pragma once
 
-#include "concepts.hpp"
 #include "errors.hpp"
+#include "types.hpp"
 
 #include <expected>
 #include <filesystem>
-
-extern "C"
-{
-#include "lauxlib.h"
-#include "lua.h"
-}
+#include <memory>
+#include <variant>
 
 namespace FW::LS
 {
-
 class Inst
 {
 public:
-  Inst() = default;
-  [[nodiscard]] std::expected<void, LuaCPushErr> register_function(lua_CFunction func) noexcept;
-
-  template <LuaType LuaValue>
-  [[nodiscard]] std::expected<LuaValue, LuaPullValErr> get_value_from_script(const std::string &table_path);
+  [[nodiscard]] std::expected<void, LuaCPushErr> register_function(const FuncRegData &reg_data) noexcept;
   [[nodiscard]] bool execute_file(const std::filesystem::path &path_to_file) noexcept;
+  [[nodiscard]] std::expected<std::variant<double, std::string, bool>, LuaPullValErr>
+  pull_global_value(PulledTypes type, const std::string &name);
 
 private:
-  std::unique_ptr<lua_State, decltype(&lua_close)> lua_{luaL_newstate(), &lua_close};
+  static lua_State* create();
+  static void close(lua_State* lua_state_ptr);
+
+  std::unique_ptr<lua_State, decltype(&Inst::close)> lua_ {Inst::create(), &Inst::close};
 };
-
-
 }; // namespace FW::LS
 
-#include "instance.ipp"
+
+//lua_State *lua_{nullptr};
