@@ -14,14 +14,14 @@ elseif(UNIX AND NOT APPLE)
   list(APPEND SOURCE_FILES src/system-path-linux.cpp)
 endif()
 
-add_library(filesystem-lib STATIC
+add_library(lib-filesystem STATIC
   ${SOURCE_FILES}
 )
 
-target_include_directories(filesystem-lib PUBLIC
+target_include_directories(lib-filesystem PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-install(TARGETS filesystem-lib DESTINATION lib)
+install(TARGETS lib-filesystem DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include/filesystem)
