@@ -1,11 +1,13 @@
 #pragma once
 
+#include "errors.hpp"
 #include "files.hpp"
 #include "instance.hpp"
+
 #include <cassert>
 
 [[nodiscard]] std::expected<std::uint32_t, FW::LS::ExecFileErr>
-FW::LS::execute_multiple_files(Inst &instance, const std::filesystem::path root_path,
+FW::LS::execute_multiple_files(Inst &instance, const std::filesystem::path &root_path,
                                const std::span<const std::filesystem::path> file_names) noexcept
 {
   if (root_path.empty()) [[unlikely]]
@@ -19,12 +21,17 @@ FW::LS::execute_multiple_files(Inst &instance, const std::filesystem::path root_
     return std::unexpected(ExecFileErr::EMPTY_FILE_LIST);
   }
 
-  auto executed_file_count{0};
-  for (const auto &name : file_names)
+  return [&]() -> std::expected<std::uint32_t, FW::LS::ExecFileErr>
   {
-    if (!instance.execute_file(root_path / name))
-      return false;
-    return std::unexpected(ExecFileErr::FAILED_TO_EXEC_LUA_FILE);
-  }
-  return executed_file_count;
+    std::uint32_t file_count{0};
+
+    for (const auto &name : file_names)
+    {
+      if (!instance.execute_file(root_path / name))
+        return std::unexpected(ExecFileErr::FAILED_TO_EXEC_LUA_FILE);
+      file_count++;
+    }
+
+    return file_count;
+  }();
 }
