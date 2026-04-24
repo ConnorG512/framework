@@ -10,7 +10,7 @@ set(SOURCE_FILES
 
 if(WIN32)
   list(APPEND SOURCE_FILES src/system-path-windows.cpp)
-elseif(LINUX)
+elseif(UNIX AND NOT APPLE)
   list(APPEND SOURCE_FILES src/system-path-linux.cpp)
 endif()
 
