@@ -25,6 +25,3 @@ private:
   std::unique_ptr<lua_State, decltype(&Inst::close)> lua_ {Inst::create(), &Inst::close};
 };
 }; // namespace FW::LS
-
-
-//lua_State *lua_{nullptr};
