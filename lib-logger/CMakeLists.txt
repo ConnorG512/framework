@@ -4,14 +4,14 @@ project(LoggerLib CXX)
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(logger-lib STATIC
+add_library(lib-logger STATIC
   src/logger.cpp
 )
 
-target_include_directories(logger-lib PUBLIC
+target_include_directories(lib-logger PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-install(TARGETS logger-lib DESTINATION lib)
+install(TARGETS lib-logger DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include/logger)
