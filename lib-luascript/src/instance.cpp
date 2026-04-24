@@ -13,8 +13,6 @@
 #include <variant>
 #include <vector>
 
-// void FW::LS::Inst::clear_stack() noexcept { lua_settop(lua_.get(), 0); }
-
 namespace
 {
 auto clear_stack = [](lua_State *lua)
