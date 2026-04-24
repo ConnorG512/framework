@@ -55,14 +55,14 @@ if(LUASCRIPT_OS)
   message(STATUS "LUASCRIPT_OS is enabled")
 endif()
 
-add_library(luascript-lib STATIC
+add_library(lib-luascript STATIC
   src/files.cpp
   src/function.cpp
   src/instance.cpp
   ${LUA_SOURCE_FILES}
 )
 
-target_include_directories(luascript-lib 
+target_include_directories(lib-luascript 
   PRIVATE
   ${LUA_SRC_DIR}
 
@@ -72,4 +72,4 @@ target_include_directories(luascript-lib
 )
 
 install(DIRECTORY include/ DESTINATION include/luascript)
-install(TARGETS luascript-lib DESTINATION lib)
+install(TARGETS lib-luascript DESTINATION lib)
