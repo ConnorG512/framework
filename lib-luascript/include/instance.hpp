@@ -15,13 +15,13 @@ class Inst
 public:
   [[nodiscard]] std::expected<void, LuaCPushErr> register_function(const FuncRegData &reg_data) noexcept;
   [[nodiscard]] bool execute_file(const std::filesystem::path &path_to_file) noexcept;
-  [[nodiscard]] std::expected<std::variant<double, std::string, bool>, LuaPullValErr>
-  pull_global_value(PulledTypes type, const std::string &name);
+  [[nodiscard]] std::expected<std::variant<std::string, double, std::int32_t, bool>, FW::LS::LuaPullValErr>
+  get_value(const std::string &key_path) noexcept;
 
 private:
-  static lua_State* create();
-  static void close(lua_State* lua_state_ptr);
+  static lua_State *create();
+  static void close(lua_State *lua_state_ptr);
 
-  std::unique_ptr<lua_State, decltype(&Inst::close)> lua_ {Inst::create(), &Inst::close};
+  std::unique_ptr<lua_State, decltype(&Inst::close)> lua_{Inst::create(), &Inst::close};
 };
 }; // namespace FW::LS
