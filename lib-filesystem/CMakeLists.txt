@@ -20,7 +20,7 @@ add_library(lib-filesystem STATIC
 
 target_include_directories(lib-filesystem PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
+  $<INSTALL_INTERFACE:include/filesystem>
 )
 
 install(TARGETS lib-filesystem DESTINATION lib)

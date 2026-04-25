@@ -10,7 +10,7 @@ add_library(lib-logger STATIC
 
 target_include_directories(lib-logger PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
+  $<INSTALL_INTERFACE:include/logger>
 )
 
 install(TARGETS lib-logger DESTINATION lib)

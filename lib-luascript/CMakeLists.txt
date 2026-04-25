@@ -68,7 +68,7 @@ target_include_directories(lib-luascript
 
   PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
+  $<INSTALL_INTERFACE:include/luascript>
 )
 
 install(DIRECTORY include/ DESTINATION include/luascript)
