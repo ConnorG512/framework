@@ -17,6 +17,7 @@
       inputsFrom = [
         libFilesystem.devShells.x86_64-linux.default
         libLogger.devShells.x86_64-linux.default
+        libLuascript.devShells.x86_64-linux.default
       ];
 
       shellHook = ''
